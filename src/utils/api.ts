@@ -1,8 +1,8 @@
 import Web3 from "web3";
-import BigNumber from "bignumber.js";
 
 import CONTRACT_ERC20 from "contracts/ERC20.json";
-import { getAddress, SupportedTokensType } from "./currency";
+import { getAddress, getDecimals, SupportedTokensType } from "./currency";
+import { fromHRNumber } from "./bigNumber";
 
 let currentAddress: string;
 export const setUtilsCurrentAddress = (newAddress: string) => {
@@ -21,10 +21,11 @@ export const CommonFactory = {
         }
         return undefined;
     },
-    mint: async (tokenName: SupportedTokensType, amount: BigNumber, chainId: number | undefined) => {
+    mint: async (tokenName: SupportedTokensType, amount: number, chainId: number | undefined) => {
         if (currentAddress) {
+            const amountBN = fromHRNumber(amount, getDecimals(tokenName, chainId) as number);
             const tokenContract = CommonFactory.createCurrencyContract(getAddress(tokenName, chainId) as string);
-            return tokenContract?.methods.mint(currentAddress, amount).send({ from: currentAddress });
+            return tokenContract?.methods.mint(currentAddress, amountBN).send({ from: currentAddress });
         }
     },
 };

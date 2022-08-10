@@ -15,8 +15,8 @@ interface GradientBorderProps {
 
 const GradientHref = ({ id, children, className, target, disabled, href, onClick }: GradientBorderProps) => {
     const handleClick = () => {
-        console.log(href)
-    }
+        console.log(href);
+    };
 
     return (
         <div
