@@ -6,21 +6,15 @@ import "./GradientHref.scss";
 interface GradientBorderProps {
     id?: string;
     className?: string;
-    target?: string;
     disabled?: boolean;
-    href?: string;
     children: React.ReactNode;
     onClick?: () => void;
 }
 
-const GradientHref = ({ id, children, className, target, disabled, href, onClick }: GradientBorderProps) => {
-    const handleClick = () => {
-        console.log(href);
-    };
-
+const GradientHref = ({ id, children, className, disabled, onClick }: GradientBorderProps) => {
     return (
         <div
-            onClick={handleClick}
+            onClick={onClick}
             id={id}
             className={cn("gradient-href gradient-href-text", className, { "gradient-href--disabled": disabled })}
         >

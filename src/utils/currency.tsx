@@ -7,6 +7,7 @@ import { ReactComponent as OneInchIcon } from "icons/currency/1inch.svg";
 import { ReactComponent as UsdtIcon } from "icons/currency/USDT.svg";
 import { ReactComponent as WBTCIcon } from "icons/currency/WBTC.svg";
 import tokenList from "submodule-contract-artifacts/stableunit.tokenlist.json";
+import { TokenMetadata } from "./types";
 
 export type SupportedTokensType = "WETH" | "WBTC" | "USDT" | "1INCH" | "SHIB" | "SuUSD";
 
@@ -51,3 +52,12 @@ export const getTokenIcon = (tokenName: SupportedTokensType) => {
             return null;
     }
 };
+
+export const addToMetamask = (tokenMetadata: TokenMetadata) =>
+    window.ethereum.request({
+        method: "wallet_watchAsset",
+        params: {
+            type: "ERC20",
+            options: tokenMetadata,
+        },
+    });

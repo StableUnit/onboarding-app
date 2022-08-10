@@ -5,6 +5,8 @@ import GradientHref from "ui-kit/components/GradientHref/GradientHref";
 import { getNetworkNameById, NetworkType, supportedNetworks } from "utils/network";
 import { TokenData } from "utils/types";
 import { CommonFactory } from "utils/api";
+import { addToMetamask, getTokenByName } from "utils/currency";
+import { addErrorNotification, addSuccessNotification } from "utils/notification";
 
 import "./styles.scss";
 
@@ -36,22 +38,42 @@ export const MainPage = () => {
     };
 
     const handleTokenMint = (data: TokenData) => async () => {
-        await CommonFactory.mint(data.name, 0, chainId);
+        try {
+            await CommonFactory.mint(data.name, data.amount, chainId);
+            addSuccessNotification("Mint process", "Success");
+        } catch (e) {
+            addErrorNotification("Mint process", "Error");
+        }
+    };
+
+    const handleAdd = (data: TokenData) => async () => {
+        const tokenMetadata = getTokenByName(data.name, chainId);
+        if (tokenMetadata) {
+            await addToMetamask(tokenMetadata);
+        }
     };
 
     return (
         <div className="main-page">
-            <Button onClick={handleOpenFaucet}>Get Rinkeby ETH</Button>
+            <Button className="main-page__token__text" onClick={handleOpenFaucet}>
+                Get &nbsp;<GradientHref>RinkebyETH</GradientHref>
+            </Button>
             <div className="main-page__tokens-title">Get custom tokens:</div>
             <div className="main-page__tokens">
                 {TOKENS.map((tokenData) => (
-                    <Button
-                        disabled={isNotSupportedChain}
-                        className="main-page__tokens__text"
-                        onClick={handleTokenMint(tokenData)}
-                    >
-                        Get {tokenData.amount}&nbsp;<GradientHref>{tokenData.name}</GradientHref>
-                    </Button>
+                    <div className="main-page__token">
+                        <Button
+                            width={160}
+                            disabled={isNotSupportedChain}
+                            className="main-page__token__text"
+                            onClick={handleTokenMint(tokenData)}
+                        >
+                            Get {tokenData.amount}&nbsp;<GradientHref>{tokenData.name}</GradientHref>
+                        </Button>
+                        <GradientHref className="main-page__token__add" onClick={handleAdd(tokenData)}>
+                            Add to metamask
+                        </GradientHref>
+                    </div>
                 ))}
             </div>
         </div>
