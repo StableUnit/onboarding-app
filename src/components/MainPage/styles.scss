@@ -1,3 +1,19 @@
 .main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  &__tokens-title {
+    padding-top: 12px;
+  }
+
+  &__tokens {
+    display: flex;
+    padding-top: 12px;
+
+    & > div {
+      margin: 0 8px;
+    }
+  }
 }

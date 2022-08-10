@@ -1,5 +1,4 @@
 import { store } from "react-notifications-component";
-import * as Sentry from "@sentry/react";
 
 const defaultMetamaskMessage = "MetaMask Tx Signature: ";
 const defaultExecutionRevertMessage = "execution reverted: ";
@@ -28,8 +27,6 @@ const getMessageFromError = (errorMessage?: string) => {
 };
 
 export const addErrorNotification = (title: string, errorMessage?: string) => {
-    Sentry.captureMessage(`${title}: ${errorMessage}`);
-
     return store.addNotification({
         title,
         message: getMessageFromError(errorMessage),

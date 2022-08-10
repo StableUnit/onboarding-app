@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import ReactNotification from "react-notifications-component";
 
 import "react-notifications-component/dist/theme.css";
-import "rsuite/dist/rsuite.min.css";
 
 import App from "./components/App/App";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";

@@ -1,5 +1,4 @@
 import React from "react";
-import * as Sentry from "@sentry/react";
 
 import { addErrorNotification } from "utils/notification";
 
@@ -9,7 +8,6 @@ interface Props {
 
 class ErrorBoundary extends React.Component<Props> {
     componentDidCatch(error: Error) {
-        Sentry.captureException(error);
         addErrorNotification("Internal Error", error.message);
     }
 
