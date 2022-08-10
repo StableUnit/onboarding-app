@@ -1,0 +1,400 @@
+{
+  "address": "0xdFdE6B33f13de2CA1A75A6F7169f50541B14f75b",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_vault",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_collateralRegistry",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "Added",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "Removed",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "assets",
+          "type": "address[]"
+        },
+        {
+          "internalType": "address[]",
+          "name": "owners",
+          "type": "address[]"
+        }
+      ],
+      "name": "batchCheckpoint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "owners",
+          "type": "address[]"
+        }
+      ],
+      "name": "batchCheckpointForAsset",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "checkpoint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "cr",
+      "outputs": [
+        {
+          "internalType": "contract ISuCollateralRegistry",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllCdps",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct SuCdpRegistry.CDP[]",
+          "name": "r",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "getCdpsByCollateral",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct SuCdpRegistry.CDP[]",
+          "name": "cdps",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "getCdpsByOwner",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct SuCdpRegistry.CDP[]",
+          "name": "r",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCdpsCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "totalCdpCount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "getCdpsCountForCollateral",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "isAlive",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "isListed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "vault",
+      "outputs": [
+        {
+          "internalType": "contract ISuVault",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x9767dd7df7804f05c9800b30d51f99194e33c76ae1fc69da5ea49f2fc2d3e2f6",
+  "receipt": {
+    "to": null,
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "contractAddress": "0xdFdE6B33f13de2CA1A75A6F7169f50541B14f75b",
+    "transactionIndex": 0,
+    "gasUsed": "1143646",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xd5bf7be4fc5b49b697f01c0faefb2b1de7f4b5763bb27885e94444c1d1890706",
+    "transactionHash": "0x9767dd7df7804f05c9800b30d51f99194e33c76ae1fc69da5ea49f2fc2d3e2f6",
+    "logs": [],
+    "blockNumber": 14518103,
+    "cumulativeGasUsed": "1143646",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xaC47e91215fb80462139756f43438402998E4A3a",
+    "0x63fea6E447F120B8Faf85B53cdaD8348e645D80E"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "d1c3e992972545e414ac7f62b849d9a1",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_collateralRegistry\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"Added\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"Removed\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"assets\",\"type\":\"address[]\"},{\"internalType\":\"address[]\",\"name\":\"owners\",\"type\":\"address[]\"}],\"name\":\"batchCheckpoint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"owners\",\"type\":\"address[]\"}],\"name\":\"batchCheckpointForAsset\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"checkpoint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"cr\",\"outputs\":[{\"internalType\":\"contract ISuCollateralRegistry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllCdps\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct SuCdpRegistry.CDP[]\",\"name\":\"r\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"getCdpsByCollateral\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct SuCdpRegistry.CDP[]\",\"name\":\"cdps\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"getCdpsByOwner\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct SuCdpRegistry.CDP[]\",\"name\":\"r\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCdpsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"totalCdpCount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"getCdpsCountForCollateral\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"isAlive\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"isListed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"vault\",\"outputs\":[{\"internalType\":\"contract ISuVault\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/lending/SuCdpRegistry.sol\":\"SuCdpRegistry\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"contracts/interfaces/ISuCollateralRegistry.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\n\\npragma solidity ^0.8.0;\\n\\ninterface ISuCollateralRegistry {\\n    function addCollateral ( address asset ) external;\\n    function collateralId ( address ) external view returns ( uint256 );\\n    function collaterals (  ) external view returns ( address[] memory );\\n    function removeCollateral ( address asset ) external;\\n    function vaultParameters (  ) external view returns ( address );\\n    function isCollateral ( address asset ) external view returns ( bool );\\n    function collateralList ( uint id ) external view returns ( address );\\n    function collateralsCount (  ) external view returns ( uint );\\n}\\n\",\"keccak256\":\"0xb1af9b686ec2dfb58cfd9a1e156c3bcf6e6cfcf482ad292926ce3e54b92a6126\",\"license\":\"UNLICENSED\"},\"contracts/interfaces/ISuVault.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\n\\npragma solidity ^0.8.0;\\n\\ninterface ISuVault {\\n    function DENOMINATOR_1E5 (  ) external view returns ( uint256 );\\n    function borrow ( address asset, address user, uint256 amount ) external returns ( uint256 );\\n    function calculateFee ( address asset, address user, uint256 amount ) external view returns ( uint256 );\\n    function changeOracleType ( address asset, address user, uint256 newOracleType ) external;\\n    function chargeFee ( address asset, address user, uint256 amount ) external;\\n    function collaterals ( address, address ) external view returns ( uint256 );\\n    function debts ( address, address ) external view returns ( uint256 );\\n    function deposit ( address asset, address user, uint256 amount ) external;\\n    function destroy ( address asset, address user ) external;\\n    function getTotalDebt ( address asset, address user ) external view returns ( uint256 );\\n    function lastUpdate ( address, address ) external view returns ( uint256 );\\n    function liquidate ( address asset, address positionOwner, uint256 mainAssetToLiquidator, uint256 mainAssetToPositionOwner, uint256 repayment, uint256 penalty, address liquidator ) external;\\n    function liquidationBlock ( address, address ) external view returns ( uint256 );\\n    function liquidationFee ( address, address ) external view returns ( uint256 );\\n    function liquidationPrice ( address, address ) external view returns ( uint256 );\\n    function oracleType ( address, address ) external view returns ( uint256 );\\n    function repay ( address asset, address user, uint256 amount ) external returns ( uint256 );\\n    function spawn ( address asset, address user ) external;\\n    function stabilityFee ( address, address ) external view returns ( uint256 );\\n    function tokenDebts ( address ) external view returns ( uint256 );\\n    function triggerLiquidation ( address asset, address positionOwner, uint256 initialPrice ) external;\\n    function update ( address asset, address user ) external;\\n    function stablecoin (  ) external view returns ( address );\\n    function vaultParameters (  ) external view returns ( address );\\n    function withdraw ( address asset, address user, uint256 amount ) external;\\n}\\n\",\"keccak256\":\"0x6957ed3f1d54522680cfb895470414933489debede7e08b1eed8ced9169bcb2b\",\"license\":\"UNLICENSED\"},\"contracts/lending/SuCdpRegistry.sol\":{\"content\":\"// SPDX-License-Identifier: BSL 1.1\\r\\n\\r\\n/*\\r\\n  Copyright 2020 Unit Protocol: Artem Zakharov (az@unit.xyz).\\r\\n*/\\r\\npragma solidity ^0.8.0;\\r\\npragma experimental ABIEncoderV2;\\r\\n\\r\\nimport \\\"../interfaces/ISuVault.sol\\\";\\r\\nimport \\\"../interfaces/ISuCollateralRegistry.sol\\\";\\r\\n\\r\\n// [deprecated]\\r\\n// This contract is needed to index all opened CDPs.\\r\\n// It can be removed if there's more gas-efficient way to do that, such as graphQL, NFT-lps or other methods\\r\\ncontract SuCdpRegistry {\\r\\n    // Collateral Debt Position\\r\\n    struct CDP {\\r\\n        address asset; // collateral token\\r\\n        address owner; // borrower account\\r\\n    }\\r\\n\\r\\n    // mapping from collateral token to list of borrowers?\\r\\n    mapping (address => address[]) cdpList;\\r\\n\\r\\n    // mapping from collateral token to borrower to the INDEX, index in the previous list?\\r\\n    mapping (address => mapping (address => uint)) cdpIndex;\\r\\n\\r\\n    // address of the vault contract\\r\\n    ISuVault public immutable vault;\\r\\n\\r\\n    // address of the collateral registry contract\\r\\n    ISuCollateralRegistry public immutable cr;\\r\\n\\r\\n    // event emitted when a new CDP is created\\r\\n    event Added(address indexed asset, address indexed owner);\\r\\n\\r\\n    // event emitted when a CDP is closed\\r\\n    event Removed(address indexed asset, address indexed owner);\\r\\n\\r\\n    // this contract is deployed after the vault and collateral registry\\r\\n    constructor (address _vault, address _collateralRegistry) {\\r\\n        require(_vault != address(0) && _collateralRegistry != address(0), \\\"Unit Protocol: ZERO_ADDRESS\\\");\\r\\n        vault = ISuVault(_vault);\\r\\n        cr = ISuCollateralRegistry(_collateralRegistry);\\r\\n    }\\r\\n\\r\\n    // anyone can create checkpoint?\\r\\n    function checkpoint(address asset, address owner) public {\\r\\n        require(asset != address(0) && owner != address(0), \\\"Unit Protocol: ZERO_ADDRESS\\\");\\r\\n\\r\\n        // only for listed assets\\r\\n        bool listed = isListed(asset, owner);\\r\\n\\r\\n        // only for alive assets\\r\\n        bool alive = isAlive(asset, owner);\\r\\n\\r\\n        if (alive && !listed) {\\r\\n            _addCdp(asset, owner);\\r\\n        } else if (listed && !alive) {\\r\\n            _removeCdp(asset, owner);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    // checkpoint in loop\\r\\n    function batchCheckpointForAsset(address asset, address[] calldata owners) external {\\r\\n        for (uint i = 0; i < owners.length; i++) {\\r\\n            checkpoint(asset, owners[i]);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    // multiple checkpoints for different collaterals\\r\\n    function batchCheckpoint(address[] calldata assets, address[] calldata owners) external {\\r\\n        require(assets.length == owners.length, \\\"Unit Protocol: ARGUMENTS_LENGTH_MISMATCH\\\");\\r\\n        for (uint i = 0; i < owners.length; i++) {\\r\\n            checkpoint(assets[i], owners[i]);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    // alive means there are debts in the vault for this collateral of this borrower\\r\\n    function isAlive(address asset, address owner) public view returns (bool) {\\r\\n        return vault.debts(asset, owner) != 0;\\r\\n    }\\r\\n\\r\\n    // listed means there are created cdps in this contract for this collateral of this borrower\\r\\n    function isListed(address asset, address owner) public view returns (bool) {\\r\\n        if (cdpList[asset].length == 0) { return false; }\\r\\n        return cdpIndex[asset][owner] != 0 || cdpList[asset][0] == owner;\\r\\n    }\\r\\n\\r\\n    // internal function to perform removal of cdp from the list\\r\\n    function _removeCdp(address asset, address owner) internal {\\r\\n        // take the index by collateral and borrower\\r\\n        uint id = cdpIndex[asset][owner];\\r\\n\\r\\n        // then delete this index\\r\\n        delete cdpIndex[asset][owner];\\r\\n\\r\\n        // if the index is not the last one\\r\\n        uint lastId = cdpList[asset].length - 1;\\r\\n\\r\\n        // swap the last element with the element to be deleted\\r\\n        if (id != lastId) {\\r\\n            address lastOwner = cdpList[asset][lastId];\\r\\n            cdpList[asset][id] = lastOwner;\\r\\n            cdpIndex[asset][lastOwner] = id;\\r\\n        }\\r\\n\\r\\n        // delete the last element\\r\\n        cdpList[asset].pop();\\r\\n\\r\\n        // can we optimize this remove function by changing the structure?\\r\\n\\r\\n        emit Removed(asset, owner);\\r\\n    }\\r\\n\\r\\n    function _addCdp(address asset, address owner) internal {\\r\\n        // remember the index of the new element\\r\\n        cdpIndex[asset][owner] = cdpList[asset].length;\\r\\n\\r\\n        // add the new element to the end of the list\\r\\n        cdpList[asset].push(owner);\\r\\n\\r\\n        emit Added(asset, owner);\\r\\n    }\\r\\n\\r\\n    // read-only function to get the list of cdps for a given collateral\\r\\n    function getCdpsByCollateral(address asset) external view returns (CDP[] memory cdps) {\\r\\n        address[] memory owners = cdpList[asset];\\r\\n        cdps = new CDP[](owners.length);\\r\\n        for (uint i = 0; i < owners.length; i++) {\\r\\n            cdps[i] = CDP(asset, owners[i]);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    // read-only function to get the list of all cdps by borrower\\r\\n    function getCdpsByOwner(address owner) external view returns (CDP[] memory r) {\\r\\n        address[] memory assets = cr.collaterals();\\r\\n        CDP[] memory cdps = new CDP[](assets.length);\\r\\n        uint actualCdpsCount;\\r\\n\\r\\n        for (uint i = 0; i < assets.length; i++) {\\r\\n            if (isListed(assets[i], owner)) {\\r\\n                cdps[actualCdpsCount++] = CDP(assets[i], owner);\\r\\n            }\\r\\n        }\\r\\n\\r\\n        r = new CDP[](actualCdpsCount);\\r\\n\\r\\n        for (uint i = 0; i < actualCdpsCount; i++) {\\r\\n            r[i] = cdps[i];\\r\\n        }\\r\\n\\r\\n    }\\r\\n\\r\\n    // read-only function to get the list of all cdps\\r\\n    function getAllCdps() external view returns (CDP[] memory r) {\\r\\n        uint totalCdpCount = getCdpsCount();\\r\\n\\r\\n        uint cdpCount;\\r\\n\\r\\n        r = new CDP[](totalCdpCount);\\r\\n\\r\\n        address[] memory assets = cr.collaterals();\\r\\n        for (uint i = 0; i < assets.length; i++) {\\r\\n            address[] memory owners = cdpList[assets[i]];\\r\\n            for (uint j = 0; j < owners.length; j++) {\\r\\n                r[cdpCount++] = CDP(assets[i], owners[j]);\\r\\n            }\\r\\n        }\\r\\n    }\\r\\n\\r\\n    // total number of cdps\\r\\n    function getCdpsCount() public view returns (uint totalCdpCount) {\\r\\n        address[] memory assets = cr.collaterals();\\r\\n        for (uint i = 0; i < assets.length; i++) {\\r\\n            totalCdpCount += cdpList[assets[i]].length;\\r\\n        }\\r\\n    }\\r\\n\\r\\n    // number of cdps for a given collateral\\r\\n    function getCdpsCountForCollateral(address asset) public view returns (uint) {\\r\\n        return cdpList[asset].length;\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x8793b380964967fddd6d4ae4411019043e2b43ecfe91b40d3a6dc48fde26f5a6\",\"license\":\"BSL 1.1\"}},\"version\":1}",
+  "bytecode": "0x60c060405234801561001057600080fd5b506040516200150238038062001502833981016040819052610031916100db565b6001600160a01b0382161580159061005157506001600160a01b03811615155b6100a15760405162461bcd60e51b815260206004820152601b60248201527f556e69742050726f746f636f6c3a205a45524f5f414444524553530000000000604482015260640160405180910390fd5b6001600160601b0319606092831b8116608052911b1660a05261010d565b80516001600160a01b03811681146100d657600080fd5b919050565b600080604083850312156100ed578182fd5b6100f6836100bf565b9150610104602084016100bf565b90509250929050565b60805160601c60a05160601c6113ad62000155600039600081816101240152818161053e0152818161087b01526109950152600081816102110152610d6501526113ad6000f3fe608060405234801561001057600080fd5b50600436106100d45760003560e01c8063bb55b7fc11610081578063f45a43201161005b578063f45a4320146101d6578063f8aa43f7146101f9578063fbfa77cf1461020c57600080fd5b8063bb55b7fc146101a8578063bce092c4146101bb578063e5011ac6146101c357600080fd5b806362eb33e3116100b257806362eb33e31461011f578063a04a7c691461015e578063b0113e6b1461017157600080fd5b80633e18638f146100d957806348e3da3c146101025780635a5fdfe514610117575b600080fd5b6100ec6100e7366004611097565b610233565b6040516100f9919061128d565b60405180910390f35b610115610110366004611145565b6103b0565b005b6100ec6104bb565b6101467f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b0390911681526020016100f9565b61011561016c3660046110f2565b61076e565b61019a61017f366004611097565b6001600160a01b031660009081526020819052604090205490565b6040519081526020016100f9565b6101156101b63660046110ba565b6107b5565b61019a610876565b6100ec6101d1366004611097565b61098f565b6101e96101e43660046110ba565b610c61565b60405190151581526020016100f9565b6101e96102073660046110ba565b610d22565b6101467f000000000000000000000000000000000000000000000000000000000000000081565b6001600160a01b03811660009081526020818152604080832080548251818502810185019093528083526060949383018282801561029a57602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161027c575b50505050509050805167ffffffffffffffff8111156102c957634e487b7160e01b600052604160045260246000fd5b60405190808252806020026020018201604052801561030e57816020015b60408051808201909152600080825260208201528152602001906001900390816102e75790505b50915060005b81518110156103a9576040518060400160405280856001600160a01b0316815260200183838151811061035757634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b031681525083828151811061038b57634e487b7160e01b600052603260045260246000fd5b602002602001018190525080806103a190611318565b915050610314565b5050919050565b82811461042a5760405162461bcd60e51b815260206004820152602860248201527f556e69742050726f746f636f6c3a20415247554d454e54535f4c454e4754485f60448201527f4d49534d4154434800000000000000000000000000000000000000000000000060648201526084015b60405180910390fd5b60005b818110156104b4576104a285858381811061045857634e487b7160e01b600052603260045260246000fd5b905060200201602081019061046d9190611097565b84848481811061048d57634e487b7160e01b600052603260045260246000fd5b90506020020160208101906101b69190611097565b806104ac81611318565b91505061042d565b5050505050565b606060006104c7610876565b905060008167ffffffffffffffff8111156104f257634e487b7160e01b600052604160045260246000fd5b60405190808252806020026020018201604052801561053757816020015b60408051808201909152600080825260208201528152602001906001900390816105105790505b50925060007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316634113e5ca6040518163ffffffff1660e01b815260040160006040518083038186803b15801561059557600080fd5b505afa1580156105a9573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526105d191908101906111ae565b905060005b815181101561076757600080600084848151811061060457634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b03166001600160a01b0316815260200190815260200160002080548060200260200160405190810160405280929190818152602001828054801561068057602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311610662575b5050505050905060005b81518110156107525760405180604001604052808585815181106106be57634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b031681526020018383815181106106f457634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b031681525087868061071490611318565b97508151811061073457634e487b7160e01b600052603260045260246000fd5b6020026020010181905250808061074a90611318565b91505061068a565b5050808061075f90611318565b9150506105d6565b5050505090565b60005b818110156107af5761079d8484848481811061048d57634e487b7160e01b600052603260045260246000fd5b806107a781611318565b915050610771565b50505050565b6001600160a01b038216158015906107d557506001600160a01b03811615155b6108215760405162461bcd60e51b815260206004820152601b60248201527f556e69742050726f746f636f6c3a205a45524f5f4144445245535300000000006044820152606401610421565b600061082d8383610c61565b9050600061083b8484610d22565b9050808015610848575081155b1561085c576108578484610dea565b6107af565b818015610867575080155b156107af576107af8484610e73565b6000807f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316634113e5ca6040518163ffffffff1660e01b815260040160006040518083038186803b1580156108d257600080fd5b505afa1580156108e6573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261090e91908101906111ae565b905060005b815181101561098a5760008083838151811061093f57634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b03166001600160a01b03168152602001908152602001600020805490508361097691906112e9565b92508061098281611318565b915050610913565b505090565b606060007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316634113e5ca6040518163ffffffff1660e01b815260040160006040518083038186803b1580156109ec57600080fd5b505afa158015610a00573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f19168201604052610a2891908101906111ae565b90506000815167ffffffffffffffff811115610a5457634e487b7160e01b600052604160045260246000fd5b604051908082528060200260200182016040528015610a9957816020015b6040805180820190915260008082526020820152815260200190600190039081610a725790505b5090506000805b8351811015610b7757610ada848281518110610acc57634e487b7160e01b600052603260045260246000fd5b602002602001015187610c61565b15610b65576040518060400160405280858381518110610b0a57634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b03168152602001876001600160a01b0316815250838380610b3990611318565b945081518110610b5957634e487b7160e01b600052603260045260246000fd5b60200260200101819052505b80610b6f81611318565b915050610aa0565b508067ffffffffffffffff811115610b9f57634e487b7160e01b600052604160045260246000fd5b604051908082528060200260200182016040528015610be457816020015b6040805180820190915260008082526020820152815260200190600190039081610bbd5790505b50935060005b81811015610c5857828181518110610c1257634e487b7160e01b600052603260045260246000fd5b6020026020010151858281518110610c3a57634e487b7160e01b600052603260045260246000fd5b60200260200101819052508080610c5090611318565b915050610bea565b50505050919050565b6001600160a01b038216600090815260208190526040812054610c8657506000610d1c565b6001600160a01b03808416600090815260016020908152604080832093861683529290522054151580610d195750816001600160a01b0316600080856001600160a01b03166001600160a01b03168152602001908152602001600020600081548110610d0257634e487b7160e01b600052603260045260246000fd5b6000918252602090912001546001600160a01b0316145b90505b92915050565b6040517f4ac1c33d0000000000000000000000000000000000000000000000000000000081526001600160a01b03838116600483015282811660248301526000917f000000000000000000000000000000000000000000000000000000000000000090911690634ac1c33d9060440160206040518083038186803b158015610da957600080fd5b505afa158015610dbd573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610de19190611275565b15159392505050565b6001600160a01b038083166000818152602081815260408083208054600180855283862097891680875297855283862082905585855281018255908452918320909101805473ffffffffffffffffffffffffffffffffffffffff191685179055517f938c63ac3d228b23f6bee7618fefc6790522e338ac202c958a2ea9eb9706c5d19190a35050565b6001600160a01b03808316600081815260016020818152604080842095871684529481528483208054908490559383528290529281205491929091610eb89190611301565b9050808214610f99576001600160a01b0384166000908152602081905260408120805483908110610ef957634e487b7160e01b600052603260045260246000fd5b60009182526020808320909101546001600160a01b038881168452918390526040909220805491909216925082919085908110610f4657634e487b7160e01b600052603260045260246000fd5b6000918252602080832091909101805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0394851617905587831682526001815260408083209490931682529290925290208290555b6001600160a01b0384166000908152602081905260409020805480610fce57634e487b7160e01b600052603160045260246000fd5b6000828152602081208201600019908101805473ffffffffffffffffffffffffffffffffffffffff191690559091019091556040516001600160a01b0385811692908716917f40e634d0e26d9ec2e860e4dd9b7b2cfbb569b6058362a1a54d3a94718bc495879190a350505050565b80516110488161135f565b919050565b60008083601f84011261105e578081fd5b50813567ffffffffffffffff811115611075578182fd5b6020830191508360208260051b850101111561109057600080fd5b9250929050565b6000602082840312156110a8578081fd5b81356110b38161135f565b9392505050565b600080604083850312156110cc578081fd5b82356110d78161135f565b915060208301356110e78161135f565b809150509250929050565b600080600060408486031215611106578081fd5b83356111118161135f565b9250602084013567ffffffffffffffff81111561112c578182fd5b6111388682870161104d565b9497909650939450505050565b6000806000806040858703121561115a578081fd5b843567ffffffffffffffff80821115611171578283fd5b61117d8883890161104d565b90965094506020870135915080821115611195578283fd5b506111a28782880161104d565b95989497509550505050565b600060208083850312156111c0578182fd5b825167ffffffffffffffff808211156111d7578384fd5b818501915085601f8301126111ea578384fd5b8151818111156111fc576111fc611349565b8060051b604051601f19603f8301168101818110858211171561122157611221611349565b604052828152858101935084860182860187018a101561123f578788fd5b8795505b83861015611268576112548161103d565b855260019590950194938601938601611243565b5098975050505050505050565b600060208284031215611286578081fd5b5051919050565b602080825282518282018190526000919060409081850190868401855b828110156112dc57815180516001600160a01b03908116865290870151168685015292840192908501906001016112aa565b5091979650505050505050565b600082198211156112fc576112fc611333565b500190565b60008282101561131357611313611333565b500390565b600060001982141561132c5761132c611333565b5060010190565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052604160045260246000fd5b6001600160a01b038116811461137457600080fd5b5056fea26469706673582212208c2d6a669854d5ac80f916de0d9e894f50e07d5fe884727b81434d3370bf00f964736f6c63430008040033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100d45760003560e01c8063bb55b7fc11610081578063f45a43201161005b578063f45a4320146101d6578063f8aa43f7146101f9578063fbfa77cf1461020c57600080fd5b8063bb55b7fc146101a8578063bce092c4146101bb578063e5011ac6146101c357600080fd5b806362eb33e3116100b257806362eb33e31461011f578063a04a7c691461015e578063b0113e6b1461017157600080fd5b80633e18638f146100d957806348e3da3c146101025780635a5fdfe514610117575b600080fd5b6100ec6100e7366004611097565b610233565b6040516100f9919061128d565b60405180910390f35b610115610110366004611145565b6103b0565b005b6100ec6104bb565b6101467f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b0390911681526020016100f9565b61011561016c3660046110f2565b61076e565b61019a61017f366004611097565b6001600160a01b031660009081526020819052604090205490565b6040519081526020016100f9565b6101156101b63660046110ba565b6107b5565b61019a610876565b6100ec6101d1366004611097565b61098f565b6101e96101e43660046110ba565b610c61565b60405190151581526020016100f9565b6101e96102073660046110ba565b610d22565b6101467f000000000000000000000000000000000000000000000000000000000000000081565b6001600160a01b03811660009081526020818152604080832080548251818502810185019093528083526060949383018282801561029a57602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161027c575b50505050509050805167ffffffffffffffff8111156102c957634e487b7160e01b600052604160045260246000fd5b60405190808252806020026020018201604052801561030e57816020015b60408051808201909152600080825260208201528152602001906001900390816102e75790505b50915060005b81518110156103a9576040518060400160405280856001600160a01b0316815260200183838151811061035757634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b031681525083828151811061038b57634e487b7160e01b600052603260045260246000fd5b602002602001018190525080806103a190611318565b915050610314565b5050919050565b82811461042a5760405162461bcd60e51b815260206004820152602860248201527f556e69742050726f746f636f6c3a20415247554d454e54535f4c454e4754485f60448201527f4d49534d4154434800000000000000000000000000000000000000000000000060648201526084015b60405180910390fd5b60005b818110156104b4576104a285858381811061045857634e487b7160e01b600052603260045260246000fd5b905060200201602081019061046d9190611097565b84848481811061048d57634e487b7160e01b600052603260045260246000fd5b90506020020160208101906101b69190611097565b806104ac81611318565b91505061042d565b5050505050565b606060006104c7610876565b905060008167ffffffffffffffff8111156104f257634e487b7160e01b600052604160045260246000fd5b60405190808252806020026020018201604052801561053757816020015b60408051808201909152600080825260208201528152602001906001900390816105105790505b50925060007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316634113e5ca6040518163ffffffff1660e01b815260040160006040518083038186803b15801561059557600080fd5b505afa1580156105a9573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526105d191908101906111ae565b905060005b815181101561076757600080600084848151811061060457634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b03166001600160a01b0316815260200190815260200160002080548060200260200160405190810160405280929190818152602001828054801561068057602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311610662575b5050505050905060005b81518110156107525760405180604001604052808585815181106106be57634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b031681526020018383815181106106f457634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b031681525087868061071490611318565b97508151811061073457634e487b7160e01b600052603260045260246000fd5b6020026020010181905250808061074a90611318565b91505061068a565b5050808061075f90611318565b9150506105d6565b5050505090565b60005b818110156107af5761079d8484848481811061048d57634e487b7160e01b600052603260045260246000fd5b806107a781611318565b915050610771565b50505050565b6001600160a01b038216158015906107d557506001600160a01b03811615155b6108215760405162461bcd60e51b815260206004820152601b60248201527f556e69742050726f746f636f6c3a205a45524f5f4144445245535300000000006044820152606401610421565b600061082d8383610c61565b9050600061083b8484610d22565b9050808015610848575081155b1561085c576108578484610dea565b6107af565b818015610867575080155b156107af576107af8484610e73565b6000807f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316634113e5ca6040518163ffffffff1660e01b815260040160006040518083038186803b1580156108d257600080fd5b505afa1580156108e6573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261090e91908101906111ae565b905060005b815181101561098a5760008083838151811061093f57634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b03166001600160a01b03168152602001908152602001600020805490508361097691906112e9565b92508061098281611318565b915050610913565b505090565b606060007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316634113e5ca6040518163ffffffff1660e01b815260040160006040518083038186803b1580156109ec57600080fd5b505afa158015610a00573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f19168201604052610a2891908101906111ae565b90506000815167ffffffffffffffff811115610a5457634e487b7160e01b600052604160045260246000fd5b604051908082528060200260200182016040528015610a9957816020015b6040805180820190915260008082526020820152815260200190600190039081610a725790505b5090506000805b8351811015610b7757610ada848281518110610acc57634e487b7160e01b600052603260045260246000fd5b602002602001015187610c61565b15610b65576040518060400160405280858381518110610b0a57634e487b7160e01b600052603260045260246000fd5b60200260200101516001600160a01b03168152602001876001600160a01b0316815250838380610b3990611318565b945081518110610b5957634e487b7160e01b600052603260045260246000fd5b60200260200101819052505b80610b6f81611318565b915050610aa0565b508067ffffffffffffffff811115610b9f57634e487b7160e01b600052604160045260246000fd5b604051908082528060200260200182016040528015610be457816020015b6040805180820190915260008082526020820152815260200190600190039081610bbd5790505b50935060005b81811015610c5857828181518110610c1257634e487b7160e01b600052603260045260246000fd5b6020026020010151858281518110610c3a57634e487b7160e01b600052603260045260246000fd5b60200260200101819052508080610c5090611318565b915050610bea565b50505050919050565b6001600160a01b038216600090815260208190526040812054610c8657506000610d1c565b6001600160a01b03808416600090815260016020908152604080832093861683529290522054151580610d195750816001600160a01b0316600080856001600160a01b03166001600160a01b03168152602001908152602001600020600081548110610d0257634e487b7160e01b600052603260045260246000fd5b6000918252602090912001546001600160a01b0316145b90505b92915050565b6040517f4ac1c33d0000000000000000000000000000000000000000000000000000000081526001600160a01b03838116600483015282811660248301526000917f000000000000000000000000000000000000000000000000000000000000000090911690634ac1c33d9060440160206040518083038186803b158015610da957600080fd5b505afa158015610dbd573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610de19190611275565b15159392505050565b6001600160a01b038083166000818152602081815260408083208054600180855283862097891680875297855283862082905585855281018255908452918320909101805473ffffffffffffffffffffffffffffffffffffffff191685179055517f938c63ac3d228b23f6bee7618fefc6790522e338ac202c958a2ea9eb9706c5d19190a35050565b6001600160a01b03808316600081815260016020818152604080842095871684529481528483208054908490559383528290529281205491929091610eb89190611301565b9050808214610f99576001600160a01b0384166000908152602081905260408120805483908110610ef957634e487b7160e01b600052603260045260246000fd5b60009182526020808320909101546001600160a01b038881168452918390526040909220805491909216925082919085908110610f4657634e487b7160e01b600052603260045260246000fd5b6000918252602080832091909101805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0394851617905587831682526001815260408083209490931682529290925290208290555b6001600160a01b0384166000908152602081905260409020805480610fce57634e487b7160e01b600052603160045260246000fd5b6000828152602081208201600019908101805473ffffffffffffffffffffffffffffffffffffffff191690559091019091556040516001600160a01b0385811692908716917f40e634d0e26d9ec2e860e4dd9b7b2cfbb569b6058362a1a54d3a94718bc495879190a350505050565b80516110488161135f565b919050565b60008083601f84011261105e578081fd5b50813567ffffffffffffffff811115611075578182fd5b6020830191508360208260051b850101111561109057600080fd5b9250929050565b6000602082840312156110a8578081fd5b81356110b38161135f565b9392505050565b600080604083850312156110cc578081fd5b82356110d78161135f565b915060208301356110e78161135f565b809150509250929050565b600080600060408486031215611106578081fd5b83356111118161135f565b9250602084013567ffffffffffffffff81111561112c578182fd5b6111388682870161104d565b9497909650939450505050565b6000806000806040858703121561115a578081fd5b843567ffffffffffffffff80821115611171578283fd5b61117d8883890161104d565b90965094506020870135915080821115611195578283fd5b506111a28782880161104d565b95989497509550505050565b600060208083850312156111c0578182fd5b825167ffffffffffffffff808211156111d7578384fd5b818501915085601f8301126111ea578384fd5b8151818111156111fc576111fc611349565b8060051b604051601f19603f8301168101818110858211171561122157611221611349565b604052828152858101935084860182860187018a101561123f578788fd5b8795505b83861015611268576112548161103d565b855260019590950194938601938601611243565b5098975050505050505050565b600060208284031215611286578081fd5b5051919050565b602080825282518282018190526000919060409081850190868401855b828110156112dc57815180516001600160a01b03908116865290870151168685015292840192908501906001016112aa565b5091979650505050505050565b600082198211156112fc576112fc611333565b500190565b60008282101561131357611313611333565b500390565b600060001982141561132c5761132c611333565b5060010190565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052604160045260246000fd5b6001600160a01b038116811461137457600080fd5b5056fea26469706673582212208c2d6a669854d5ac80f916de0d9e894f50e07d5fe884727b81434d3370bf00f964736f6c63430008040033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 4189,
+        "contract": "contracts/lending/SuCdpRegistry.sol:SuCdpRegistry",
+        "label": "cdpList",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_array(t_address)dyn_storage)"
+      },
+      {
+        "astId": 4195,
+        "contract": "contracts/lending/SuCdpRegistry.sol:SuCdpRegistry",
+        "label": "cdpIndex",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_array(t_address)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => address[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_address)dyn_storage"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
