@@ -42,6 +42,7 @@ export const MainPage = () => {
             await CommonFactory.mint(data.name, data.amount, chainId);
             addSuccessNotification("Mint process", "Success");
         } catch (e) {
+            console.error(e);
             addErrorNotification("Mint process", "Error");
         }
     };
@@ -61,7 +62,7 @@ export const MainPage = () => {
             <div className="main-page__tokens-title">Get custom tokens:</div>
             <div className="main-page__tokens">
                 {TOKENS.map((tokenData) => (
-                    <div className="main-page__token">
+                    <div className="main-page__token" key={tokenData.name}>
                         <Button
                             width={160}
                             disabled={isNotSupportedChain}
