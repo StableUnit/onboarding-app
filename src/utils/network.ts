@@ -2,7 +2,7 @@ import Web3 from "web3";
 
 export type NetworkType =
     | "eth"
-    | "rinkeby"
+    | "goerli"
     | "polygon"
     | "bsc"
     | "fantom"
@@ -13,7 +13,7 @@ export type NetworkType =
 
 export const NETWORK: Record<NetworkType, NetworkType> = {
     eth: "eth",
-    rinkeby: "rinkeby",
+    goerli: "goerli",
     polygon: "polygon",
     aurora: "aurora",
     harmony: "harmony",
@@ -23,12 +23,12 @@ export const NETWORK: Record<NetworkType, NetworkType> = {
     unsupported: "unsupported",
 };
 
-export const supportedNetworks = [NETWORK.rinkeby];
+export const supportedNetworks = [NETWORK.goerli];
 
 export const networkNames = {
     [NETWORK.eth]: "Ethereum",
     [NETWORK.polygon]: "Polygon",
-    [NETWORK.rinkeby]: "Rinkeby",
+    [NETWORK.goerli]: "Goerli",
     [NETWORK.aurora]: "Aurora",
     [NETWORK.harmony]: "Harmony",
     [NETWORK.bsc]: "Binance Smart Chain",
@@ -40,8 +40,8 @@ export const getNetworkNameById: (chainId?: number) => NetworkType | undefined =
     switch (chainId) {
         case 1:
             return NETWORK.eth;
-        case 4:
-            return NETWORK.rinkeby;
+        case 5:
+            return NETWORK.goerli;
         case 56:
             return NETWORK.bsc;
         case 137:
@@ -64,8 +64,8 @@ export const getIdByNetworkName: (name: NetworkType) => number = (name) => {
     switch (name) {
         case NETWORK.eth:
             return 1;
-        case NETWORK.rinkeby:
-            return 4;
+        case NETWORK.goerli:
+            return 5;
         case NETWORK.bsc:
             return 56;
         case NETWORK.polygon:
@@ -83,7 +83,7 @@ export const getIdByNetworkName: (name: NetworkType) => number = (name) => {
     }
 };
 
-export const DEFAULT_NETWORK = NETWORK.rinkeby;
+export const DEFAULT_NETWORK = NETWORK.goerli;
 export const DEFAULT_NETWORK_ID = getIdByNetworkName(DEFAULT_NETWORK);
 
 export const networkInfo = {
@@ -93,11 +93,16 @@ export const networkInfo = {
         blockExplorerUrls: ["https://etherscan.io"],
         rpcUrls: ["https://rpc.ankr.com/eth"],
     },
-    [NETWORK.rinkeby]: {
-        chainName: "Rinkeby",
-        chainId: Web3.utils.toHex(getIdByNetworkName(NETWORK.rinkeby)),
-        blockExplorerUrls: ["https://rinkeby.etherscan.io"],
-        rpcUrls: ["https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"],
+    [NETWORK.goerli]: {
+        chainName: "Goerli",
+        chainId: Web3.utils.toHex(getIdByNetworkName(NETWORK.goerli)),
+        blockExplorerUrls: ["https://goerli.etherscan.io"],
+        rpcUrls: ["https://goerli.infura.io/v3"],
+        nativeCurrency: {
+            name: "GoerliETH",
+            symbol: "GoerliETH",
+            decimals: 18,
+        },
     },
     [NETWORK.bsc]: {
         chainName: "Binance Smart Chain Mainnet",

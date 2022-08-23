@@ -34,7 +34,7 @@ export const MainPage = () => {
     const isNotSupportedChain = !!chainId && !supportedNetworks.includes(getNetworkNameById(chainId) as NetworkType);
 
     const handleOpenFaucet = () => {
-        window.open("https://rinkebyfaucet.com/", "_blank");
+        window.open("https://goerlifaucet.com/", "_blank");
     };
 
     const handleTokenMint = (data: TokenData) => async () => {
@@ -57,7 +57,7 @@ export const MainPage = () => {
     return (
         <div className="main-page">
             <Button className="main-page__token__text" onClick={handleOpenFaucet}>
-                Get &nbsp;<GradientHref>RinkebyETH</GradientHref>
+                Get &nbsp;<GradientHref>GoerliETH</GradientHref>
             </Button>
             <div className="main-page__tokens-title">Get custom tokens:</div>
             <div className="main-page__tokens">

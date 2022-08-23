@@ -42,7 +42,7 @@ const providerOptions = {
         package: WalletConnectProvider,
         options: {
             rpc: getRPC(),
-            chainId: [getIdByNetworkName(NETWORK.rinkeby)],
+            chainId: [getIdByNetworkName(DEFAULT_NETWORK)],
             network: DEFAULT_NETWORK,
             qrcode: true,
             qrcodeModalOptions: {
@@ -59,7 +59,7 @@ const providerOptions = {
             appName: "StableUnit App",
             infuraId: "20518e992a3143bd86f2367198e7856a",
             rpc: getRPC(),
-            chainId: [getIdByNetworkName(NETWORK.rinkeby)],
+            chainId: [getIdByNetworkName(DEFAULT_NETWORK)],
             darkMode: true,
         },
     },

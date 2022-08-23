@@ -20,7 +20,7 @@ const getNetworkImage = (network?: NetworkType) => {
     switch (network?.toLowerCase()) {
         case "eth":
             return EthImage;
-        case "rinkeby":
+        case "goerli":
             return RinkebyImage;
         case "polygon":
             return PolygonImage;
