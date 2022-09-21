@@ -68,7 +68,7 @@ export const MainPage = ({ web3 }: Props) => {
         console.log(suUSDToken);
         if (suUSDToken) {
             return boxContract.methods
-                .retrieve(suUSDToken.address, BN_1E18.multipliedBy(1000))
+                .retrieve(suUSDToken.address, BN_1E18.multipliedBy(1000).toString(10))
                 .send({ from: currentAddress });
         }
     };
