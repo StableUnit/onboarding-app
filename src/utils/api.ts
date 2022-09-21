@@ -27,5 +27,7 @@ export const CommonFactory = {
             const tokenContract = CommonFactory.createCurrencyContract(getAddress(tokenName, chainId) as string);
             return tokenContract?.methods.mint(currentAddress, amountBN.toString(10)).send({ from: currentAddress });
         }
+
+        return undefined;
     },
 };

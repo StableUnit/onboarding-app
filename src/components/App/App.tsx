@@ -136,7 +136,7 @@ const App = React.memo(() => {
             <Header onConnect={onConnect} onDisconnect={onDisconnect} />
             <div className="App__content">
                 <div className={cn("App__scroller", { "App__scroller--disabled": isNotSupportedChain })}>
-                    <MainPage />
+                    <MainPage web3={web3} />
                 </div>
             </div>
             <NetworkModal />

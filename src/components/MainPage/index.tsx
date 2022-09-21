@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
+import Web3 from "web3";
+
+import CONTRACT_BOX from "contracts/box.json";
 import { StateContext } from "reducer/constants";
 import Button from "ui-kit/components/Button/Button";
 import GradientHref from "ui-kit/components/GradientHref/GradientHref";
-import { getNetworkNameById, NetworkType, supportedNetworks } from "utils/network";
+import { getIdByNetworkName, getNetworkNameById, NETWORK, NetworkType, supportedNetworks } from "utils/network";
 import { TokenData } from "utils/types";
 import { CommonFactory } from "utils/api";
 import { addToMetamask, getTokenByName } from "utils/currency";
 import { addErrorNotification, addSuccessNotification } from "utils/notification";
+import { BN_1E18 } from "utils/bigNumber";
 
 import "./styles.scss";
 
@@ -19,28 +23,32 @@ const TOKENS = [
         name: "WBTC",
         amount: 1,
     },
-    {
-        name: "USDT",
-        amount: 1000,
-    },
-    {
-        name: "1INCH",
-        amount: 1000,
-    },
 ] as TokenData[];
 
-export const MainPage = () => {
-    const { chainId } = useContext(StateContext);
+type Props = {
+    web3: Web3;
+};
+
+const CHAIN_ID = getIdByNetworkName(NETWORK.goerli);
+
+export const MainPage = ({ web3 }: Props) => {
+    const { chainId, currentAddress } = useContext(StateContext);
     const isNotSupportedChain = !!chainId && !supportedNetworks.includes(getNetworkNameById(chainId) as NetworkType);
 
     const handleOpenFaucet = () => {
-        window.open("https://goerlifaucet.com/", "_blank");
+        window.open("https://goerli-faucet.mudit.blog/", "_blank");
+    };
+
+    const handleOpenMainDApp = () => {
+        window.open("https://testnet.stableunit.org/", "_blank");
     };
 
     const handleTokenMint = (data: TokenData) => async () => {
         try {
-            await CommonFactory.mint(data.name, data.amount, chainId);
-            addSuccessNotification("Mint process", "Success");
+            const res = await CommonFactory.mint(data.name, data.amount, chainId);
+            if (res) {
+                addSuccessNotification("Mint process", "Success");
+            }
         } catch (e) {
             console.error(e);
             addErrorNotification("Mint process", "Error");
@@ -54,29 +62,77 @@ export const MainPage = () => {
         }
     };
 
+    const getSuUSD = () => {
+        const boxContract = new web3.eth.Contract(CONTRACT_BOX as any, "0xeF77E0394D2b6229a760033B79F9c109F6602fb2");
+        const suUSDToken = getTokenByName("SuUSD", CHAIN_ID);
+        console.log(suUSDToken);
+        if (suUSDToken) {
+            return boxContract.methods
+                .retrieve(suUSDToken.address, BN_1E18.multipliedBy(1000))
+                .send({ from: currentAddress });
+        }
+    };
+
     return (
         <div className="main-page">
-            <Button className="main-page__token__text" onClick={handleOpenFaucet}>
-                Get &nbsp;<GradientHref>GoerliETH</GradientHref>
-            </Button>
-            <div className="main-page__tokens-title">Get custom tokens:</div>
-            <div className="main-page__tokens">
-                {TOKENS.map((tokenData) => (
-                    <div className="main-page__token" key={tokenData.name}>
+            <div className="main-page__tokens-title">Testnet onboarding</div>
+            <ol>
+                <li>
+                    <div className="main-page__token">
+                        <Button className="main-page__token__text" onClick={handleOpenFaucet}>
+                            Get&nbsp;<GradientHref>GoerliETH</GradientHref>
+                        </Button>
+                    </div>
+                </li>
+                <li>
+                    <div className="main-page__token">
                         <Button
                             width={160}
                             disabled={isNotSupportedChain}
                             className="main-page__token__text"
-                            onClick={handleTokenMint(tokenData)}
+                            onClick={getSuUSD}
                         >
-                            Get {tokenData.amount}&nbsp;<GradientHref>{tokenData.name}</GradientHref>
+                            Get&nbsp;1000&nbsp;<GradientHref>SuUSD</GradientHref>
                         </Button>
-                        <GradientHref className="main-page__token__add" onClick={handleAdd(tokenData)}>
+                        <GradientHref
+                            className="main-page__token__add"
+                            onClick={handleAdd({ name: "SuUSD", amount: 0 })}
+                        >
                             Add to metamask
                         </GradientHref>
                     </div>
-                ))}
-            </div>
+                </li>
+                <li>Open your wallet and enjoy</li>
+            </ol>
+
+            <div className="main-page__tokens-title">Alternative</div>
+            <ol>
+                <li>
+                    <div className="main-page__tokens">
+                        {TOKENS.map((tokenData) => (
+                            <div className="main-page__token" key={tokenData.name}>
+                                <Button
+                                    width={160}
+                                    disabled={isNotSupportedChain}
+                                    className="main-page__token__text"
+                                    onClick={handleTokenMint(tokenData)}
+                                >
+                                    Get {tokenData.amount}&nbsp;<GradientHref>{tokenData.name}</GradientHref>
+                                </Button>
+                                <GradientHref className="main-page__token__add" onClick={handleAdd(tokenData)}>
+                                    Add to metamask
+                                </GradientHref>
+                            </div>
+                        ))}
+                    </div>
+                </li>
+                <li>
+                    <GradientHref className="link" onClick={handleOpenMainDApp}>
+                        Borrow StableUnits
+                    </GradientHref>
+                </li>
+                <li>Open your wallet and enjoy</li>
+            </ol>
         </div>
     );
 };
