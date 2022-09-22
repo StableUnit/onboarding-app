@@ -7,16 +7,24 @@ interface GradientBorderProps {
     id?: string;
     className?: string;
     disabled?: boolean;
+    href?: string;
     children: React.ReactNode;
     onClick?: () => void;
 }
 
-const GradientHref = ({ id, children, className, disabled, onClick }: GradientBorderProps) => {
+const GradientHref = ({ id, children, className, disabled, onClick, href }: GradientBorderProps) => {
+    const hrefClick = () => {
+        window.open(href, "_blank");
+    };
+
     return (
         <div
-            onClick={onClick}
+            onClick={href ? hrefClick : onClick}
             id={id}
-            className={cn("gradient-href gradient-href-text", className, { "gradient-href--disabled": disabled })}
+            className={cn("gradient-href gradient-href-text", className, {
+                "gradient-href--disabled": disabled,
+                "gradient-href--pointer": href,
+            })}
         >
             {children}
         </div>

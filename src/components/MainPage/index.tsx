@@ -65,7 +65,6 @@ export const MainPage = ({ web3 }: Props) => {
     const getSuUSD = () => {
         const boxContract = new web3.eth.Contract(CONTRACT_BOX as any, "0xeF77E0394D2b6229a760033B79F9c109F6602fb2");
         const suUSDToken = getTokenByName("SuUSD", CHAIN_ID);
-        console.log(suUSDToken);
         if (suUSDToken) {
             return boxContract.methods
                 .retrieve(suUSDToken.address, BN_1E18.multipliedBy(1000).toString(10))
@@ -79,9 +78,14 @@ export const MainPage = ({ web3 }: Props) => {
             <ol>
                 <li>
                     <div className="main-page__token">
-                        <Button className="main-page__token__text" onClick={handleOpenFaucet}>
-                            Get&nbsp;<GradientHref>GoerliETH</GradientHref>
-                        </Button>
+                        To get GoerliETH visit
+                        <GradientHref href="https://goerli-faucet.pk910.de/">goerli-faucet.pk910.de</GradientHref>
+                        or
+                        <GradientHref href="https://goerli-faucet.com/">goerli-faucet.com</GradientHref>
+                        or
+                        <GradientHref href="https://goerlifaucet.com/">goerlifaucet.com</GradientHref>
+                        or
+                        <GradientHref href="https://www.google.com/search?q=GOERLI+FAUCET">google</GradientHref>
                     </div>
                 </li>
                 <li>
