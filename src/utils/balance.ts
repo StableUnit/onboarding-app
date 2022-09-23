@@ -8,7 +8,7 @@ const DAY = 24 * HOUR;
 const YEAR = 365 * DAY;
 
 export const getNewBalance = (oldBalance: BigNumber, APR: BigNumber) => {
-    const added = oldBalance.multipliedBy(APR).dividedBy(YEAR).dividedBy(BN_1E18);
-    // newBalance = oldBalance * (1 + ARP / YEAR) = oldBalance + oldBalance * ARP / YEAR
-    return oldBalance.plus(added);
+    const addedPerSecond = oldBalance.multipliedBy(APR).dividedBy(YEAR).dividedBy(BN_1E18);
+    // we need per 200ms
+    return oldBalance.plus(addedPerSecond.div(5));
 };

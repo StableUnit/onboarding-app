@@ -14,13 +14,16 @@ const SumInfo = () => {
 
     return (
         <div className="sum-info">
-            <img src={tokenLogo} width={36} height={36} />
+            <img src={tokenLogo} width={48} height={48} />
             <div className="sum-info__info">
                 {currentAddress ? (
                     <>
-                        <div className="sum-info__info_title">{BORROW_CURRENCY}</div>
+                        <div className="sum-info__info__title">{BORROW_CURRENCY}</div>
                         <div className="sum-info__info__description">
-                            {toHRNumber(suUSDBalance, 18, 8).toLocaleString("en-us", { maximumFractionDigits: 6 })}
+                            {toHRNumber(suUSDBalance, 18, 8).toLocaleString("en-us", {
+                                maximumFractionDigits: 6,
+                                minimumFractionDigits: 6,
+                            })}
                         </div>
                     </>
                 ) : (

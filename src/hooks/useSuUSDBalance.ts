@@ -6,7 +6,7 @@ import { BORROW_CURRENCY } from "utils/currency";
 import { useBalance } from "./parameters/useBalance";
 import { useSuAPR } from "./parameters/useSuAPR";
 
-const UPDATE_BALANCE_INTERVAL = 1000;
+const UPDATE_BALANCE_INTERVAL = 200;
 
 export const useSuUSDBalance = () => {
     const { isMounted, suUSDBalance } = useContext(StateContext);
