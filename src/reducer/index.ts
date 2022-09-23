@@ -1,9 +1,12 @@
+import BigNumber from "bignumber.js";
+
 // eslint-disable-next-line no-shadow
 export enum Actions {
     SetCurrentAddress = "SET_CURRENT_ADDRESS",
     SetChainId = "SET_CHAIN",
     SetIsMounted = "SET_IS_MOUNTED",
     SetIsNetworkModalVisible = "SET_IS_NETWORK_MODAL_VISIBLE",
+    SetSuUSDBalance = "SET_SUUSD_BALANCE",
 }
 
 export type ActionType =
@@ -20,6 +23,10 @@ export type ActionType =
           payload: boolean;
       }
     | {
+          type: Actions.SetSuUSDBalance;
+          payload: BigNumber;
+      }
+    | {
           type: Actions.SetIsMounted;
           payload: boolean;
       };
@@ -29,6 +36,7 @@ export interface ReducerState {
     chainId?: number;
     isMounted: boolean;
     isNetworkModalVisible: boolean;
+    suUSDBalance: BigNumber;
 }
 
 const reducer: (state: ReducerState, action: ActionType) => ReducerState = (state, action) => {
@@ -53,6 +61,12 @@ const reducer: (state: ReducerState, action: ActionType) => ReducerState = (stat
             return {
                 ...state,
                 isNetworkModalVisible: action.payload,
+            };
+        }
+        case Actions.SetSuUSDBalance: {
+            return {
+                ...state,
+                suUSDBalance: action.payload,
             };
         }
         default:

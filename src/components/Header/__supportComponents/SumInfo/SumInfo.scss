@@ -1,0 +1,24 @@
+@import "src/ui-kit/styles/vars";
+
+.sum-info {
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  &__info {
+    padding-left: 9px;
+    color: white;
+
+    &__title {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &__description {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}

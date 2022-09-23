@@ -6,6 +6,7 @@ import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import cn from "classnames";
 
 import { Actions } from "reducer";
+import { useSuUSDBalance } from "hooks/useSuUSDBalance";
 import { DispatchContext, StateContext } from "reducer/constants";
 import { setUtilsCurrentAddress, setUtilsWeb3 } from "utils/api";
 import {
@@ -81,6 +82,7 @@ const App = React.memo(() => {
     const [web3, setWeb3] = useState(new Web3(Web3.givenProvider));
     const { chainId } = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
+    useSuUSDBalance();
 
     const onDisconnect = async () => {
         // @ts-ignore

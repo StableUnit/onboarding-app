@@ -5,7 +5,6 @@ import { useDevice } from "hooks";
 import { Actions } from "reducer";
 import { ReactComponent as ArrowDownIcon } from "icons/arrow-down.svg";
 import { ReactComponent as BurgerIcon } from "icons/burger.svg";
-import tokenLogo from "icons/currency/suUSD.svg";
 import { DispatchContext, StateContext } from "reducer/constants";
 import ButtonGray from "ui-kit/components/ButtonGray/ButtonGray";
 import Button from "ui-kit/components/Button/Button";
@@ -17,6 +16,7 @@ import MenuModal from "./__supportComponents/MenuModal/MenuModal";
 import HeaderDropdown from "./__supportComponents/HeaderDropdown/HeaderDropdown";
 
 import "./Header.scss";
+import SumInfo from "./__supportComponents/SumInfo/SumInfo";
 
 interface HeaderProps {
     onConnect: () => void;
@@ -59,7 +59,7 @@ const Header = ({ onConnect, onDisconnect }: HeaderProps) => {
 
     return (
         <div className={cn("header", "header-mobile")}>
-            <img src={tokenLogo} width={36} height={36} />
+            <SumInfo />
 
             <div className="header__section">
                 {!isMobile && <NetworkChanger onClick={openNetworkModal} />}
