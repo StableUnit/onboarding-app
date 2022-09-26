@@ -58,7 +58,10 @@ export const MainPage = ({ web3 }: Props) => {
     const handleAdd = (data: TokenData) => async () => {
         const tokenMetadata = getTokenByName(data.name, chainId);
         if (tokenMetadata) {
-            await addToMetamask(tokenMetadata);
+            await addToMetamask({
+                ...tokenMetadata,
+                image: data.name === "SuUSD" ? "https://stableunit.org/assets/img/logo.svg" : undefined,
+            });
         }
     };
 
@@ -81,11 +84,7 @@ export const MainPage = ({ web3 }: Props) => {
                         To get GoerliETH visit
                         <GradientHref href="https://goerli-faucet.pk910.de/">goerli-faucet.pk910.de</GradientHref>
                         or
-                        <GradientHref href="https://goerli-faucet.com/">goerli-faucet.com</GradientHref>
-                        or
-                        <GradientHref href="https://goerlifaucet.com/">goerlifaucet.com</GradientHref>
-                        or
-                        <GradientHref href="https://www.google.com/search?q=GOERLI+FAUCET">google</GradientHref>
+                        <GradientHref href="https://discord.gg/puMeUhUpJf">ask in discord</GradientHref>
                     </div>
                 </li>
                 <li>
