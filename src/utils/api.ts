@@ -2,7 +2,7 @@ import Web3 from "web3";
 
 import BigNumber from "bignumber.js";
 import CONTRACT_ERC20 from "contracts/ERC20.json";
-import SuUSD from "submodule-contract-artifacts/goerli/SuUSD.json";
+import USDPro from "submodule-contract-artifacts/goerli/USDPro.json";
 import { BORROW_CURRENCY, getAddress, getDecimals, SupportedTokensType } from "./currency";
 import { fromHRNumber } from "./bigNumber";
 
@@ -44,7 +44,7 @@ export const CommonFactory = {
         const address = getAddress(BORROW_CURRENCY, chainId);
         if (address) {
             const newWeb3 = web3 ?? new Web3(Web3.givenProvider);
-            const tokenContract = new newWeb3.eth.Contract(SuUSD.abi as any, address);
+            const tokenContract = new newWeb3.eth.Contract(USDPro.abi as any, address);
             return new BigNumber(await tokenContract?.methods.getYieldAPR().call());
         }
         return new BigNumber(0);

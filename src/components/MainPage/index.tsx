@@ -60,14 +60,14 @@ export const MainPage = ({ web3 }: Props) => {
         if (tokenMetadata) {
             await addToMetamask({
                 ...tokenMetadata,
-                image: data.name === "SuUSD" ? "https://stableunit.org/assets/img/logo.svg" : undefined,
+                image: data.name === "USDPro" ? "https://stableunit.org/assets/img/logo.svg" : undefined,
             });
         }
     };
 
     const getSuUSD = () => {
         const boxContract = new web3.eth.Contract(CONTRACT_BOX as any, "0xeF77E0394D2b6229a760033B79F9c109F6602fb2");
-        const suUSDToken = getTokenByName("SuUSD", CHAIN_ID);
+        const suUSDToken = getTokenByName("USDPro", CHAIN_ID);
         if (suUSDToken) {
             return boxContract.methods
                 .retrieve(suUSDToken.address, BN_1E18.multipliedBy(1000).toString(10))
@@ -95,11 +95,11 @@ export const MainPage = ({ web3 }: Props) => {
                             className="main-page__token__text"
                             onClick={getSuUSD}
                         >
-                            Get&nbsp;1000&nbsp;<GradientHref>SuUSD</GradientHref>
+                            Get&nbsp;1000&nbsp;<GradientHref>USD Pro</GradientHref>
                         </Button>
                         <GradientHref
                             className="main-page__token__add"
-                            onClick={handleAdd({ name: "SuUSD", amount: 0 })}
+                            onClick={handleAdd({ name: "USDPro", amount: 0 })}
                         >
                             Add to metamask
                         </GradientHref>

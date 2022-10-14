@@ -9,9 +9,9 @@ import { ReactComponent as WBTCIcon } from "icons/currency/WBTC.svg";
 import tokenList from "submodule-contract-artifacts/stableunit.tokenlist.json";
 import { TokenMetadata } from "./types";
 
-export type SupportedTokensType = "WETH" | "WBTC" | "USDT" | "1INCH" | "SHIB" | "SuUSD";
+export type SupportedTokensType = "WETH" | "WBTC" | "USDT" | "1INCH" | "SHIB" | "USDPro";
 
-export const BORROW_CURRENCY = "SuUSD" as SupportedTokensType;
+export const BORROW_CURRENCY = "USDPro" as SupportedTokensType;
 
 export const getSupportedTokens = (chainId: number) => tokenList.tokens.filter((v) => v.chainId === chainId);
 export const getSupportedTokensAddresses = (chainId: number) => getSupportedTokens(chainId).map((v) => v.address);
@@ -46,7 +46,7 @@ export const getTokenIcon = (tokenName: SupportedTokensType) => {
             return <OneInchIcon />;
         case "SHIB":
             return <SHIBIcon />;
-        case "SuUSD":
+        case "USDPro":
             return <SuusdIcon />;
         default:
             return null;
