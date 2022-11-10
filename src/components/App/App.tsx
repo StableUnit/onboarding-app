@@ -8,6 +8,7 @@ import cn from "classnames";
 import { Actions } from "reducer";
 import { useSuUSDBalance, useUpdateListener } from "hooks";
 import { DispatchContext, StateContext } from "reducer/constants";
+import { BugIcon } from "ui-kit/images/icons";
 import { setUtilsCurrentAddress, setUtilsWeb3 } from "utils/api";
 import {
     DEFAULT_NETWORK,
@@ -128,6 +129,13 @@ const App = React.memo(() => {
         dispatch({ type: Actions.SetIsMounted, payload: true });
     };
 
+    const onBugClick = () => {
+        window.open(
+            "https://docs.google.com/forms/d/e/1FAIpQLSf1Tqq8TwjOtgK8_tFndM3QDJW2XTy8oCs6zoPLUWey1nBvwA/viewform",
+            "_blank"
+        );
+    };
+
     useEffect(() => {
         onConnect();
     }, []);
@@ -141,6 +149,7 @@ const App = React.memo(() => {
                 <div className={cn("App__scroller", { "App__scroller--disabled": isNotSupportedChain })}>
                     <MainPage web3={web3} />
                 </div>
+                <BugIcon className="bug-icon" onClick={onBugClick} />
             </div>
             <NetworkModal />
         </div>
