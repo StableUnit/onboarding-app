@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Web3 from "web3";
 
+import { useGlobalUpdate } from "hooks";
 import CONTRACT_BOX from "contracts/box.json";
 import { StateContext } from "reducer/constants";
 import Button from "ui-kit/components/Button/Button";
@@ -33,6 +34,7 @@ const CHAIN_ID = getIdByNetworkName(NETWORK.goerli);
 
 export const MainPage = ({ web3 }: Props) => {
     const { chainId, currentAddress } = useContext(StateContext);
+    const { update } = useGlobalUpdate();
     const isNotSupportedChain = !!chainId && !supportedNetworks.includes(getNetworkNameById(chainId) as NetworkType);
 
     const handleOpenFaucet = () => {
@@ -51,7 +53,7 @@ export const MainPage = ({ web3 }: Props) => {
             }
         } catch (e) {
             console.error(e);
-            addErrorNotification("Mint process", "Error");
+            addErrorNotification("Mint error", e.message);
         }
     };
 
@@ -65,13 +67,20 @@ export const MainPage = ({ web3 }: Props) => {
         }
     };
 
-    const getSuUSD = () => {
+    const getUSDPro = async () => {
         const boxContract = new web3.eth.Contract(CONTRACT_BOX as any, "0xeF77E0394D2b6229a760033B79F9c109F6602fb2");
         const suUSDToken = getTokenByName("USDPro", CHAIN_ID);
         if (suUSDToken) {
-            return boxContract.methods
-                .retrieve(suUSDToken.address, BN_1E18.multipliedBy(1000).toString(10))
-                .send({ from: currentAddress });
+            try {
+                await boxContract.methods
+                    .retrieve(suUSDToken.address, BN_1E18.multipliedBy(1000).toString(10))
+                    .send({ from: currentAddress });
+                addSuccessNotification("Mint USD Pro", "Success");
+                update();
+            } catch (e) {
+                console.error(e);
+                addErrorNotification("Mint USD Pro error", e.message);
+            }
         }
     };
 
@@ -93,7 +102,7 @@ export const MainPage = ({ web3 }: Props) => {
                             width={160}
                             disabled={isNotSupportedChain}
                             className="main-page__token__text"
-                            onClick={getSuUSD}
+                            onClick={getUSDPro}
                         >
                             Get&nbsp;1000&nbsp;<GradientHref>USD Pro</GradientHref>
                         </Button>

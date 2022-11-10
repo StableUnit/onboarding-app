@@ -7,6 +7,9 @@ export enum Actions {
     SetIsMounted = "SET_IS_MOUNTED",
     SetIsNetworkModalVisible = "SET_IS_NETWORK_MODAL_VISIBLE",
     SetSuUSDBalance = "SET_SUUSD_BALANCE",
+    SetUpdateFlag = "SET_UPDATE_FLAG",
+    AddToUpdatePool = "ADD_TO_UPDATE_POOL",
+    RemoveFromUpdatePool = "REMOVE_FROM_UPDATE_POOL",
 }
 
 export type ActionType =
@@ -27,6 +30,18 @@ export type ActionType =
           payload: BigNumber;
       }
     | {
+          type: Actions.SetUpdateFlag;
+          payload: boolean | undefined;
+      }
+    | {
+          type: Actions.AddToUpdatePool;
+          payload: string;
+      }
+    | {
+          type: Actions.RemoveFromUpdatePool;
+          payload: string;
+      }
+    | {
           type: Actions.SetIsMounted;
           payload: boolean;
       };
@@ -36,6 +51,8 @@ export interface ReducerState {
     chainId?: number;
     isMounted: boolean;
     isNetworkModalVisible: boolean;
+    updateFlag?: boolean;
+    updatePool?: string[];
     suUSDBalance: BigNumber;
 }
 
@@ -61,6 +78,25 @@ const reducer: (state: ReducerState, action: ActionType) => ReducerState = (stat
             return {
                 ...state,
                 isNetworkModalVisible: action.payload,
+            };
+        }
+        case Actions.SetUpdateFlag: {
+            return {
+                ...state,
+                updateFlag: action.payload,
+            };
+        }
+        case Actions.AddToUpdatePool: {
+            const haveKey = state.updatePool?.find((v) => v === action.payload);
+            return {
+                ...state,
+                updatePool: haveKey ? state.updatePool : [...(state.updatePool ?? []), action.payload],
+            };
+        }
+        case Actions.RemoveFromUpdatePool: {
+            return {
+                ...state,
+                updatePool: state.updatePool?.filter((v) => v !== action.payload),
             };
         }
         case Actions.SetSuUSDBalance: {

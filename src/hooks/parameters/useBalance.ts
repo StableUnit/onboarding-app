@@ -1,31 +1,22 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-import BigNumber from "bignumber.js";
+import { useContext } from "react";
 
 import { StateContext } from "reducer/constants";
 import { CommonFactory } from "utils/api";
 import { getAddress, getDecimals, SupportedTokensType } from "utils/currency";
 import { toHRNumber } from "utils/bigNumber";
 
+import { useParameter } from "./useParameter";
+
 export const useBalance = (currency: SupportedTokensType, showBalance = true) => {
-    const { chainId, currentAddress } = useContext(StateContext);
-    const [balanceBN, setBalanceBN] = useState(new BigNumber(0));
+    const { chainId } = useContext(StateContext);
     const decimals = getDecimals(currency, chainId);
     const tokenAddress = getAddress(currency, chainId);
-
-    const updateParameter = useCallback(async () => {
-        if (currentAddress && chainId) {
-            try {
-                const newResult = await CommonFactory.balance(tokenAddress);
-                setBalanceBN(newResult);
-            } catch (e) {
-                setBalanceBN(new BigNumber(0));
-            }
-        }
-    }, [currentAddress, chainId]);
-
-    useEffect(() => {
-        updateParameter();
-    }, [updateParameter]);
+    const balanceBN = useParameter(
+        `balance ${currency}`,
+        () => CommonFactory.balance(tokenAddress),
+        tokenAddress,
+        showBalance
+    );
 
     return {
         balanceBN,

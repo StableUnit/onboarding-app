@@ -8,6 +8,8 @@ export const initialState: ReducerState = {
     currentAddress: undefined,
     isMounted: false,
     isNetworkModalVisible: false,
+    updateFlag: undefined,
+    updatePool: undefined,
     suUSDBalance: new BigNumber(0),
 };
 

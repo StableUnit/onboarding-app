@@ -6,7 +6,7 @@ import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import cn from "classnames";
 
 import { Actions } from "reducer";
-import { useSuUSDBalance } from "hooks/useSuUSDBalance";
+import { useSuUSDBalance, useUpdateListener } from "hooks";
 import { DispatchContext, StateContext } from "reducer/constants";
 import { setUtilsCurrentAddress, setUtilsWeb3 } from "utils/api";
 import {
@@ -83,6 +83,7 @@ const App = React.memo(() => {
     const { chainId } = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
     useSuUSDBalance();
+    useUpdateListener();
 
     const onDisconnect = async () => {
         // @ts-ignore
